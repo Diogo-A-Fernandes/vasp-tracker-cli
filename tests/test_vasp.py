@@ -66,9 +66,9 @@ def test_events_sorted_by_timestamp(tmp_path):
 
 def test_read_codes_txt(tmp_path):
     f = tmp_path / "codes.txt"
-    f.write_text("12345\n67890\n")
+    f.write_text("123452222221\n67890223124141\n")
     codes = read_codes(str(f))
-    assert codes == ["12345", "67890"]
+    assert codes == ["123452222221", "67890223124141"]
 
 def test_read_codes_csv(tmp_path):
     df = pd.DataFrame({"codigo": ["A", "B", "C"]})

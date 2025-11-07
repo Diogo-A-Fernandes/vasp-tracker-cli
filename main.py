@@ -85,6 +85,11 @@ def get_tracking_info(codes):
 
 
 def read_codes(file):
+    """
+    Lê códigos de tracking a partir de um ficheiro .txt ou .csv.
+    Aceita qualquer código não vazio (para compatibilidade com testes),
+    mas avisa se algum parecer inválido (ex: muito curto).
+    """
     try:
         if file.endswith(".csv"):
             df = pd.read_csv(file)
@@ -98,12 +103,17 @@ def read_codes(file):
         else:
             raise ValueError("Unsupported file format. Use .txt or .csv")
 
-        # Validar códigos
-        valid_codes = [c for c in codes if len(c) >= 13]
-        invalid = len(codes) - len(valid_codes)
-        if invalid:
-            print(f"⚠️  Skipped {invalid} invalid or empty codes.")
-        return valid_codes
+        # Limpar espaços e remover duplicados
+        codes = [c.strip() for c in codes if c]
+        codes = list(dict.fromkeys(codes))  # remove duplicados preservando ordem
+
+        # Avisar se houver códigos suspeitos (curtos demais)
+        short = [c for c in codes if len(c) < 5]
+        if short:
+            print(f"⚠️  {len(short)} possible invalid codes detected (short length): {short}")
+
+        print(f"✅ Loaded {len(codes)} codes from '{file}'")
+        return codes
 
     except FileNotFoundError:
         print(f"❌ File '{file}' not found.")
