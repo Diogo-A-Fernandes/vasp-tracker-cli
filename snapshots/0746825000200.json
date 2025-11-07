@@ -1,0 +1,23 @@
+{
+    "service": {
+        "serviceBarCode": "0746825000200",
+        "clientReference": ""
+    },
+    "forwardField": false,
+    "forwardFieldDeliveryKios": false,
+    "forwardFieldPickupKios": false,
+    "forwardDropoff": false,
+    "fowardDropoffDeliveryKios": false,
+    "reverseField": false,
+    "reverseFieldPickupKios": false,
+    "reverseFieldWithTwoBarCodes": false,
+    "reverseFieldPickupKiosWithTwoBarCodes": false,
+    "rtoField": false,
+    "rtoFieldPickupKios": false,
+    "servicePodUrl": null,
+    "servicePodAvailable": false,
+    "clientEvents": [],
+    "currentEvent": null,
+    "eta": null,
+    "iconConfiguration": null
+}
